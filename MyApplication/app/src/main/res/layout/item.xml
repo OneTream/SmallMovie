@@ -5,13 +5,12 @@
     android:gravity="center"
     android:layout_marginTop="5dp"
     android:layout_margin="10dp">
-    <ImageView
-
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/main_adv"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_centerInParent="true"
-        ></ImageView>
+        ></com.facebook.drawee.view.SimpleDraweeView>
     <TextView
         android:id="@+id/tv"
         android:textColor="@color/colortext"

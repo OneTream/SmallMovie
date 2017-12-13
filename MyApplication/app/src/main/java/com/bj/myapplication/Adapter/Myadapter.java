@@ -1,6 +1,7 @@
 package com.bj.myapplication.Adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 
 import com.bj.myapplication.Bean.HomePage;
 import com.bj.myapplication.R;
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class Myadapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> imp
         MyViewHolder myViewHolder= (MyViewHolder) holder;
         List<HomePage.RetBean.ListBean.ChildListBean> childList = list.get(position).getChildList();
         for (int i = 0; i <childList.size(); i++) {
-            Glide.with(context).load(childList.get(i).getPic()).into(myViewHolder.main_adv);
+            myViewHolder.main_adv.setImageURI(Uri.parse(childList.get(i).getPic()));
             myViewHolder.tv.setText(childList.get(i).getTitle());
         }
         myViewHolder.itemView.setTag(position);
