@@ -5,4 +5,5 @@ package com.bj.myapplication.net;
  */
 
 public class Api {
+    public static final   String HOST = "http://api.svipmovie.com/front/";
 }
