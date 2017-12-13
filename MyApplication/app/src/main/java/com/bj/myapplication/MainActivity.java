@@ -15,5 +15,7 @@ public class MainActivity extends AppCompatActivity {
         Log.e("xxx", "");
         Toast.makeText(this, "骚白", Toast.LENGTH_SHORT).show();
 
+        Toast.makeText(this, "lililiiiiiiiiiiiii", Toast.LENGTH_SHORT).show();
+
     }
 }
