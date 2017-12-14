@@ -6,10 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".View.MainActivity">
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="150dp">
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="#535151"
+            android:drawableLeft="@mipmap/sea"
+            android:hint="念天堂"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:textColorHint="#fff"
+            android:layout_height="30dp" />
+    </FrameLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
