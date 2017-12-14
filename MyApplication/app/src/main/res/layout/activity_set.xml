@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_colorful"
-    >
+    android:orientation="vertical"
+    tools:context="com.bj.myapplication.View.SetActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,26 +25,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="@mipmap/my_bg_colorful"
-        >
-
-        <ImageView
-            android:id="@+id/img_set"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@mipmap/my_set"
-            android:layout_marginLeft="440dp"
-            android:layout_gravity="center_vertical"
-            />
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@mipmap/bg_colorful"
         android:orientation="vertical"
         >
 
@@ -51,25 +34,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            >
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30dp"
-                android:background="@mipmap/my_records"
-                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="历史"
-                android:textColor="#ffff"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
-                />
+                android:text="推荐给好友"
+                android:textColor="#EDD582" />
 
 
             <ImageView
@@ -77,41 +52,29 @@
                 android:layout_height="13dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="340dp"
-                android:background="@mipmap/right"
-                />
+                android:background="@mipmap/right" />
 
 
         </LinearLayout>
 
-
-
         <TextView
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#7ED3F9"
-            android:layout_marginLeft="60dp"
+            android:background="#EDD582"
             />
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             >
 
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30dp"
-                android:background="@mipmap/my_down"
-                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="缓存"
-                android:textColor="#ffff"
+                android:text="清理缓存"
+                android:textColor="#EDD582"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 />
@@ -121,39 +84,31 @@
                 android:layout_width="8dp"
                 android:layout_height="13dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="340dp"
+                android:layout_marginLeft="350dp"
                 android:background="@mipmap/right"
                 />
 
 
         </LinearLayout>
-
         <TextView
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#7ED3F9"
-            android:layout_marginLeft="60dp"
+            android:background="#EDD582"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             >
 
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30dp"
-                android:background="@mipmap/my_collection"
-                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="收藏"
-                android:textColor="#ffff"
+                android:text="关于我们"
+                android:textColor="#EDD582"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 />
@@ -163,39 +118,31 @@
                 android:layout_width="8dp"
                 android:layout_height="13dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="340dp"
+                android:layout_marginLeft="350dp"
                 android:background="@mipmap/right"
                 />
 
 
         </LinearLayout>
-
         <TextView
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#7ED3F9"
-            android:layout_marginLeft="60dp"
+            android:background="#EDD582"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             >
 
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30dp"
-                android:background="@mipmap/my_everyone"
-                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="主题"
-                android:textColor="#ffff"
+                android:text="建议反馈"
+                android:textColor="#EDD582"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 />
@@ -205,19 +152,20 @@
                 android:layout_width="8dp"
                 android:layout_height="13dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="340dp"
+                android:layout_marginLeft="350dp"
                 android:background="@mipmap/right"
                 />
 
 
         </LinearLayout>
-
         <TextView
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#7ED3F9"
-            android:layout_marginLeft="60dp"
+            android:background="#EDD582"
             />
+
+
+
 
 
     </LinearLayout>
