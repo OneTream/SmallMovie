@@ -23,7 +23,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:background="#535151"
-            android:drawableLeft="@mipmap/sea"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:gravity="center"
