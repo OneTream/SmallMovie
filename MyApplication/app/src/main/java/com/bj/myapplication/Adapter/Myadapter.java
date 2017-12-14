@@ -44,7 +44,7 @@ public class Myadapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> imp
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item2, parent, false);
        MyViewHolder vh = new MyViewHolder(view);
         //将创建的View注册点击事件
         view.setOnClickListener(this);

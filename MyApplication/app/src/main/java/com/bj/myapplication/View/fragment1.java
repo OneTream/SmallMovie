@@ -31,6 +31,7 @@ public class fragment1 extends Fragment implements IView_Video_Detail{
     private TextView actors;
     private TextView director;
     private String dataId;
+    private TextView description;
 
     @Nullable
     @Override
@@ -42,6 +43,7 @@ public class fragment1 extends Fragment implements IView_Video_Detail{
         p_video_detail.relevance2(dataId);
         actors = view.findViewById(R.id.actors);
         director = view.findViewById(R.id.director);
+        description = view.findViewById(R.id.description);
         rv = view.findViewById(R.id.rv);
         return view;
     }
@@ -60,5 +62,8 @@ public class fragment1 extends Fragment implements IView_Video_Detail{
         });
         rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
         rv.setAdapter(myadapter_f1);
+        actors.setText("导演："+videoDetail.getRet().getActors());
+        director.setText("主演："+videoDetail.getRet().getDirector());
+        description.setText("简介："+videoDetail.getRet().getDescription());
     }
 }

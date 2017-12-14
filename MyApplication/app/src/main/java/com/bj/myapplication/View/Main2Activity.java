@@ -3,15 +3,18 @@ package com.bj.myapplication.View;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.bj.myapplication.Bean.VideoDetail;
 import com.bj.myapplication.R;
 import com.bj.myapplication.presenter.P_Video_Detail;
-import com.hjm.bottomtabbar.BottomTabBar;
 
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 import tv.danmaku.ijk.media.widget.media.AndroidMediaController;
@@ -19,10 +22,10 @@ import tv.danmaku.ijk.media.widget.media.IjkVideoView;
 
 public class Main2Activity extends AppCompatActivity implements IView_Video_Detail {
 
-
     private IjkVideoView mIjkPlayer;
-    private BottomTabBar mMBottomTabBar;
-
+    private PagerSlidingTabStrip pst;
+    private ViewPager vp;
+    String[] snames={"简介","评论"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,22 +39,7 @@ public class Main2Activity extends AppCompatActivity implements IView_Video_Deta
         //与P层交互
         P_Video_Detail p_video_detail = new P_Video_Detail(this);
         p_video_detail.relevance2(dataId);
-        mMBottomTabBar.init(getSupportFragmentManager())
-                .setImgSize(40, 40)
-                .setFontSize(14)
-                .setTabPadding(4, 6, 10)
-                .setChangeColor(Color.YELLOW, Color.DKGRAY)
-                .addTabItem("简介", R.mipmap.collection, fragment1.class)
-                .addTabItem("评论", R.mipmap.special, fragment2.class)
-                .isShowDivider(false)
-                .setOnTabChangeListener(new BottomTabBar.OnTabChangeListener() {
-                    @Override
-                    public void onTabChange(int position, String name) {
-
-                    }
-                });
     }
-
 
     @Override
     public void getShow(VideoDetail videoDetail) {
@@ -89,6 +77,41 @@ public class Main2Activity extends AppCompatActivity implements IView_Video_Deta
 
     private void initView() {
         mIjkPlayer = (IjkVideoView) findViewById(R.id.ijkPlayer);
-        mMBottomTabBar = (BottomTabBar) findViewById(R.id.mBottomTabBar);
+        pst = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        vp = (ViewPager) findViewById(R.id.vp);
+        vp.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        pst.setViewPager(vp);
+    }
+    //适配器
+    class MyPagerAdapter extends FragmentPagerAdapter {
+
+
+        public MyPagerAdapter(FragmentManager supportFragmentManager) {
+            super(supportFragmentManager);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return snames[position];
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Fragment fragment=null;
+            switch (position){
+                case 0:
+                    fragment = new fragment1();
+                    break;
+                case 1:
+                    fragment = new fragment2();
+                    break;
+            }
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            return snames.length;
+        }
     }
 }
