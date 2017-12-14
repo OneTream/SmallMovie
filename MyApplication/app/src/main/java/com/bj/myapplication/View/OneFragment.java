@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.bj.myapplication.Adapter.Myadapter;
@@ -31,14 +32,24 @@ public class OneFragment extends Fragment implements IView_Home_Page{
     private String dataId;
     private Banner mBanner;
     private RecyclerView mRlv;
+    private EditText editText;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.onefragment, container, false);
         mBanner = (Banner) view.findViewById(R.id.banner);
+        editText = view.findViewById(R.id.etSearch);
         mRlv = (RecyclerView) view.findViewById(R.id.rlv);
         P_Home_Page p = new P_Home_Page(this);
         p.relevance();
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
     @Override

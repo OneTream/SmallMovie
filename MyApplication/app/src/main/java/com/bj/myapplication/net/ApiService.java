@@ -1,7 +1,9 @@
 package com.bj.myapplication.net;
 
 import com.bj.myapplication.Bean.Comment;
+import com.bj.myapplication.Bean.FindDataBean;
 import com.bj.myapplication.Bean.HomePage;
+import com.bj.myapplication.Bean.SearchBean;
 import com.bj.myapplication.Bean.VideoDetail;
 
 import io.reactivex.Flowable;
@@ -22,4 +24,14 @@ public interface ApiService {
     //获取评论列表参数
     @GET("Commentary/getCommentList.do")
     Flowable<Comment>  getCommentList(@Query("mediaId") String dataId);
+
+    //发现界面
+    @GET("columns/getVideoList.do")
+    Flowable<FindDataBean> getFindData(@Query("catalogId") String catalogId, @Query("pnum") int pnum);
+
+    //搜索界面
+    //http://api.svipmovie.com/front/searchKeyWordApi/getVideoListByKeyWord.do?keyword=念天堂&pnum=1
+    @GET("searchKeyWordApi/getVideoListByKeyWord.do")
+    Flowable<SearchBean> getSearchData(@Query("keyword")String keyword, @Query("pnum")int pnum);
+
 }
