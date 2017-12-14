@@ -17,7 +17,7 @@
         android:fitsSystemWindows="true" />
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
-        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="48dip" />
 

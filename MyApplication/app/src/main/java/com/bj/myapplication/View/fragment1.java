@@ -25,13 +25,14 @@ import static android.content.Context.MODE_PRIVATE;
  * Created by 努力努力再努力 on 2017/11/23.
  */
 
-public class fragment1 extends Fragment implements IView_Video_Detail{
+public class fragment1 extends Fragment implements IView_Video_Detail, View.OnClickListener {
 
     private RecyclerView rv;
     private TextView actors;
     private TextView director;
     private String dataId;
     private TextView description;
+    private TextView open;
 
     @Nullable
     @Override
@@ -44,7 +45,9 @@ public class fragment1 extends Fragment implements IView_Video_Detail{
         actors = view.findViewById(R.id.actors);
         director = view.findViewById(R.id.director);
         description = view.findViewById(R.id.description);
-        rv = view.findViewById(R.id.rv);
+        rv = view.findViewById(R.id.rv_f1);
+        open = view.findViewById(R.id.open);
+        open.setOnClickListener(this);
         return view;
     }
     @Override
@@ -65,5 +68,20 @@ public class fragment1 extends Fragment implements IView_Video_Detail{
         actors.setText("导演："+videoDetail.getRet().getActors());
         director.setText("主演："+videoDetail.getRet().getDirector());
         description.setText("简介："+videoDetail.getRet().getDescription());
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(description.getVisibility()==View.VISIBLE){
+            actors.setVisibility(View.VISIBLE);
+            director.setVisibility(View.VISIBLE);
+            description.setVisibility(View.GONE);
+            open.setText("展开");
+        }else{
+            actors.setVisibility(View.VISIBLE);
+            director.setVisibility(View.VISIBLE);
+            description.setVisibility(View.VISIBLE);
+            open.setText("收起");
+        }
     }
 }

@@ -56,8 +56,7 @@ public class Myadapter_f1 extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder= (MyViewHolder) holder;
         Glide.with(context).load(childList.get(position).getPic()).into(myViewHolder.main_adv);
-            myViewHolder.tv.setText(childList.get(position).getTitle());
-
+        myViewHolder.tv.setText(childList.get(position).getTitle());
         myViewHolder.itemView.setTag(position);
     }
 

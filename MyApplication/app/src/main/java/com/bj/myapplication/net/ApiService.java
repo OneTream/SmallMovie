@@ -1,9 +1,8 @@
 package com.bj.myapplication.net;
 
+import com.bj.myapplication.Bean.Comment;
 import com.bj.myapplication.Bean.HomePage;
 import com.bj.myapplication.Bean.VideoDetail;
-
-import org.w3c.dom.Comment;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
