@@ -16,6 +16,7 @@ import com.bj.myapplication.Bean.HomePage;
 import com.bj.myapplication.R;
 import com.bj.myapplication.presenter.P_Home_Page;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public class TwoFragment extends Fragment implements IView_Home_Page {
 
     @Override
     public void getShow(HomePage homePage) {
-        List<HomePage.RetBean.ListBean> lists = homePage.getRet().getList();
+        final List<HomePage.RetBean.ListBean> lists = homePage.getRet().getList();
         TwoAdapter twoAdapter = new TwoAdapter(lists, getActivity());
         mRv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mRv.setAdapter(twoAdapter);
@@ -52,6 +53,12 @@ public class TwoFragment extends Fragment implements IView_Home_Page {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getActivity(), TwoActivity.class);
+                String moreURL = lists.get(position).getMoreURL();
+                List<HomePage.RetBean.ListBean.ChildListBean> childList = lists.get(position).getChildList();
+                intent.putExtra("list", (Serializable) childList);
+                String title = lists.get(position).getTitle();
+                intent.putExtra("title", title);
+                intent.putExtra("moreURL", moreURL);
                 startActivity(intent);
             }
         });

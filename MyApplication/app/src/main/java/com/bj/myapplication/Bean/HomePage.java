@@ -1,5 +1,6 @@
 package com.bj.myapplication.Bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -169,7 +170,7 @@ public class HomePage {
             private String moreURL;
             private String title;
             private String bigPicShowFlag;
-            private List<ChildListBean> childList;
+            private  List<ChildListBean> childList;
 
             public String getShowStyle() {
                 return showStyle;
@@ -235,7 +236,7 @@ public class HomePage {
                 this.bigPicShowFlag = bigPicShowFlag;
             }
 
-            public List<ChildListBean> getChildList() {
+            public List<ChildListBean>  getChildList() {
                 return childList;
             }
 
@@ -243,7 +244,7 @@ public class HomePage {
                 this.childList = childList;
             }
 
-            public static class ChildListBean {
+            public static class  ChildListBean {
                 /**
                  * airTime : 2013
                  * duration : 02:04:58
