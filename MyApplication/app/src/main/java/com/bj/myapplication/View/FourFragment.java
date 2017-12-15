@@ -26,18 +26,14 @@ public class FourFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fourfragment, container, false);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
 
-
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                      //透明状态栏
-                    getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                      //透明导航栏
-                      getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-                  }
-
-
-                  initView();
-
+        initView();
         return view;
     }
 
@@ -45,13 +41,13 @@ public class FourFragment extends Fragment {
 
         ImageView img_set = view.findViewById(R.id.img_set);
 
-         img_set.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent intent = new Intent(getActivity(),SetActivity.class);
-                 startActivity(intent);
-             }
-         });
+        img_set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SetActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

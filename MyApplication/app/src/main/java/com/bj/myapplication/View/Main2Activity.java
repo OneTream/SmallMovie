@@ -25,7 +25,8 @@ public class Main2Activity extends AppCompatActivity implements IView_Video_Deta
     private IjkVideoView mIjkPlayer;
     private PagerSlidingTabStrip pst;
     private ViewPager vp;
-    String[] snames={"简介","评论"};
+    String[] snames = {"简介", "评论"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +83,7 @@ public class Main2Activity extends AppCompatActivity implements IView_Video_Deta
         vp.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         pst.setViewPager(vp);
     }
+
     //适配器
     class MyPagerAdapter extends FragmentPagerAdapter {
 
@@ -97,8 +99,8 @@ public class Main2Activity extends AppCompatActivity implements IView_Video_Deta
 
         @Override
         public Fragment getItem(int position) {
-            Fragment fragment=null;
-            switch (position){
+            Fragment fragment = null;
+            switch (position) {
                 case 0:
                     fragment = new fragment1();
                     break;

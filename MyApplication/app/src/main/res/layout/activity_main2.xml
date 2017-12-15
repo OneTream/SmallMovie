@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:background="@mipmap/bg_colorful"
     tools:context=".View.Main2Activity">
-
     <tv.danmaku.ijk.media.widget.media.IjkVideoView
         android:id="@+id/ijkPlayer"
         android:layout_width="match_parent"

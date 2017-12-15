@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.bj.myapplication.Adapter.FindDataAdapter;
 import com.bj.myapplication.Bean.FindDataBean;
@@ -33,6 +34,11 @@ public class ThreeFragment extends Fragment implements FindView, View.OnClickLis
     final String catalogId = "402834815584e463015584e539330016";
     private Button bt;
     private int page = 2;
+    private View view;
+    /**
+     * 我的
+     */
+    private TextView mTitleName;
 
     @Nullable
     @Override
@@ -49,6 +55,8 @@ public class ThreeFragment extends Fragment implements FindView, View.OnClickLis
         bt.setOnClickListener(this);
         FindPresenter findPresenter = new FindPresenter(this);
         findPresenter.relevance(catalogId, 1);
+        initView(view);
+        mTitleName.setText("发现");
         return view;
     }
 
@@ -67,7 +75,7 @@ public class ThreeFragment extends Fragment implements FindView, View.OnClickLis
             public void clickImg(int position) {
                 Intent intent = new Intent(getContext(), Main2Activity.class);
                 String dataId = list.get(position).dataId;
-                intent.putExtra("dataId",dataId);
+                intent.putExtra("dataId", dataId);
                 startActivity(intent);
             }
         });
@@ -82,5 +90,9 @@ public class ThreeFragment extends Fragment implements FindView, View.OnClickLis
                 findPresenter.relevance(catalogId, page);
                 break;
         }
+    }
+
+    private void initView(View view) {
+        mTitleName = (TextView) view.findViewById(R.id.title_name);
     }
 }

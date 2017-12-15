@@ -13,6 +13,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             fresco:roundAsCircle="true"
+            fresco:placeholderImage="@mipmap/launcher"
             android:layout_centerInParent="true"
             ></com.facebook.drawee.view.SimpleDraweeView>
         <LinearLayout
