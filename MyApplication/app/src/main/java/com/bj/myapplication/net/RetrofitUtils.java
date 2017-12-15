@@ -2,6 +2,7 @@ package com.bj.myapplication.net;
 
 import android.util.Log;
 
+import com.bj.myapplication.Bean.FilmBean;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -58,4 +59,6 @@ public class RetrofitUtils {
         Retrofit retrofit = getRetrofit(url);
         return retrofit.create(cl);
     }
+
+
 }

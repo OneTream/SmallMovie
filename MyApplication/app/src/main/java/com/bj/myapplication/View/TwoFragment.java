@@ -26,6 +26,7 @@ import java.util.List;
 public class TwoFragment extends Fragment implements IView_Home_Page {
 
     private RecyclerView mRv;
+    private View view;
     /**
      * 我的
      */
@@ -50,14 +51,26 @@ public class TwoFragment extends Fragment implements IView_Home_Page {
         mRv.setAdapter(twoAdapter);
 
         twoAdapter.setOnItemClickListener(new TwoAdapter.OnItemClickListener() {
+
+            private String moreURL;
+
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getActivity(), TwoActivity.class);
-                String moreURL = lists.get(position).getMoreURL();
+                moreURL = lists.get(position).getMoreURL();
                 List<HomePage.RetBean.ListBean.ChildListBean> childList = lists.get(position).getChildList();
                 intent.putExtra("list", (Serializable) childList);
                 String title = lists.get(position).getTitle();
                 intent.putExtra("title", title);
+                intent.putExtra("moreURL", moreURL);
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (moreURL.equals("")){
+                            moreURL ="http://api.svipmovie.com/front/columns/getVideoList.do?catalogId=ff8080815b9075a6015b94ef79dc0284&information=null";
+                        }
+                    }
+                });
                 intent.putExtra("moreURL", moreURL);
                 startActivity(intent);
             }

@@ -22,6 +22,7 @@
         <activity android:name=".View.Main2Activity" />
         <activity android:name=".View.SetActivity"></activity>
         <activity android:name=".View.SearchActivity"></activity>
+        <activity android:name=".View.FavoriteActivity"/>
     </application>
 
 </manifest>

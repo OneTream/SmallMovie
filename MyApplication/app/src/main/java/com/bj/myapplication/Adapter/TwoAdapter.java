@@ -63,7 +63,6 @@ public class TwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> im
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         List<HomePage.RetBean.ListBean.ChildListBean> childList = lists.get(position).getChildList();
-
         myViewHolder.two_image.setImageURI(Uri.parse((lists.get(position).getChildList().get(0).getPic())));
         myViewHolder.two_tv.setText(lists.get(position).getTitle());
 
