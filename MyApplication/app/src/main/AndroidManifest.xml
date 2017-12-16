@@ -20,9 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.Main2Activity" />
-        <activity android:name=".View.SetActivity"></activity>
-        <activity android:name=".View.SearchActivity"></activity>
-        <activity android:name=".View.FavoriteActivity"/>
+        <activity android:name=".View.SetActivity" />
+        <activity android:name=".View.SearchActivity" />
+        <activity android:name=".View.FavoriteActivity" />
+        <activity android:name=".View.LiShiActivity" />
+        <activity android:name=".View.ShouCangActivity" />
+        <activity android:name=".View.ZhuTiActivity"></activity>
     </application>
 
 </manifest>

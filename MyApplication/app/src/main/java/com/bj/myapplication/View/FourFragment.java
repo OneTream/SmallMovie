@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bj.myapplication.R;
 
@@ -48,6 +50,50 @@ public class FourFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+        LinearLayout layout_lishi = view.findViewById(R.id.layout_lishi);
+        layout_lishi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                        Intent intent = new Intent(getActivity(),LiShiActivity.class);
+                        startActivity(intent);
+
+            }
+        });
+
+
+        LinearLayout layout_huancun = view.findViewById(R.id.layout_huancun);
+        layout_huancun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getActivity(),"敬请期待",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        LinearLayout layout_shoucang = view.findViewById(R.id.layout_shoucang);
+        layout_shoucang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),ShouCangActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        LinearLayout layout_zhuti = view.findViewById(R.id.layout_zhuti);
+        layout_zhuti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getActivity(),"敬请期待",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
 
     }
 

@@ -26,36 +26,32 @@
     </LinearLayout>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
 
         <LinearLayout
+            android:id="@+id/layout_lishi"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30dp"
-                android:background="@mipmap/my_records"
-                />
+                android:background="@mipmap/my_records" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
                 android:text="历史"
-                android:textColor="#ffff"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                />
+                android:textColor="#ffff" />
 
 
             <ImageView
@@ -63,44 +59,39 @@
                 android:layout_height="13dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="340dp"
-                android:background="@mipmap/right"
-                />
+                android:background="@mipmap/right" />
 
 
         </LinearLayout>
 
 
-
         <TextView
             android:layout_width="370dp"
             android:layout_height="1dp"
-            android:background="#7ED3F9"
             android:layout_marginLeft="60dp"
-            />
+            android:background="#7ED3F9" />
 
 
         <LinearLayout
+            android:id="@+id/layout_huancun"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30dp"
-                android:background="@mipmap/my_down"
-                />
+                android:background="@mipmap/my_down" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
                 android:text="缓存"
-                android:textColor="#ffff"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                />
+                android:textColor="#ffff" />
 
 
             <ImageView
@@ -108,8 +99,7 @@
                 android:layout_height="13dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="340dp"
-                android:background="@mipmap/right"
-                />
+                android:background="@mipmap/right" />
 
 
         </LinearLayout>
@@ -117,32 +107,29 @@
         <TextView
             android:layout_width="370dp"
             android:layout_height="1dp"
-            android:background="#7ED3F9"
             android:layout_marginLeft="60dp"
-            />
+            android:background="#7ED3F9" />
 
         <LinearLayout
+            android:id="@+id/layout_shoucang"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30dp"
-                android:background="@mipmap/my_collection"
-                />
+                android:background="@mipmap/my_collection" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
                 android:text="收藏"
-                android:textColor="#ffff"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                />
+                android:textColor="#ffff" />
 
 
             <ImageView
@@ -150,8 +137,7 @@
                 android:layout_height="13dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="340dp"
-                android:background="@mipmap/right"
-                />
+                android:background="@mipmap/right" />
 
 
         </LinearLayout>
@@ -159,32 +145,29 @@
         <TextView
             android:layout_width="370dp"
             android:layout_height="1dp"
-            android:background="#7ED3F9"
             android:layout_marginLeft="60dp"
-            />
+            android:background="#7ED3F9" />
 
         <LinearLayout
+            android:id="@+id/layout_zhuti"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30dp"
-                android:background="@mipmap/my_everyone"
-                />
+                android:background="@mipmap/my_everyone" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="主题"
-                android:textColor="#ffff"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
-                />
+                android:text="主题"
+                android:textColor="#ffff" />
 
 
             <ImageView
@@ -192,8 +175,7 @@
                 android:layout_height="13dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="340dp"
-                android:background="@mipmap/right"
-                />
+                android:background="@mipmap/right" />
 
 
         </LinearLayout>
@@ -201,14 +183,11 @@
         <TextView
             android:layout_width="370dp"
             android:layout_height="1dp"
-            android:background="#7ED3F9"
             android:layout_marginLeft="60dp"
-            />
+            android:background="#7ED3F9" />
 
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>
