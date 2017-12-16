@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bj.myapplication.Bean.FilmBean;
 import com.bj.myapplication.R;
+import com.bj.myapplication.net.OnNetListener;
 
 import java.util.List;
 
@@ -19,8 +20,8 @@ import java.util.List;
  */
 
 public class TTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    List<FilmBean.RetBean.ListBean> list;
-    Context context;
+    private List<FilmBean.RetBean.ListBean> list;
+    private Context context;
 
     public TTAdapter(List<FilmBean.RetBean.ListBean> list, Context context) {
         this.list = list;
@@ -31,13 +32,22 @@ public class TTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.ttitem, parent, false);
-        MyViewHolder vh = new MyViewHolder(view);
+        final MyViewHolder vh = new MyViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onRecyclerListener.onRecycler(vh.getPosition());
+            }
+        });
         return vh;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
+        String pic = list.get(position).getPic();
+        myViewHolder.ta_image.setImageURI(Uri.parse(pic));
+        myViewHolder.ta_tv.setText(list.get(position).getTitle());
     }
 
     @Override
@@ -57,4 +67,16 @@ public class TTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    /**
+     * 自定义接口实现点击事件
+     */
+    private OnRecyclerListener onRecyclerListener;
+
+    public interface OnRecyclerListener {
+        void onRecycler(int position);
+    }
+
+    public void setOnRecyclerListener(OnRecyclerListener onRecyclerListener) {
+        this.onRecyclerListener = onRecyclerListener;
+    }
 }

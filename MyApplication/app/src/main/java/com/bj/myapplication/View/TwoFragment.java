@@ -6,17 +6,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bj.myapplication.Adapter.TwoAdapter;
 import com.bj.myapplication.Bean.HomePage;
 import com.bj.myapplication.R;
 import com.bj.myapplication.presenter.P_Home_Page;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,11 +28,11 @@ import java.util.List;
 public class TwoFragment extends Fragment implements IView_Home_Page {
 
     private RecyclerView mRv;
-    private View view;
     /**
      * 我的
      */
     private TextView mTitleName;
+    private List<HomePage.RetBean.ListBean.ChildListBean> childList;
 
     @Nullable
     @Override
@@ -46,35 +48,52 @@ public class TwoFragment extends Fragment implements IView_Home_Page {
     @Override
     public void getShow(HomePage homePage) {
         final List<HomePage.RetBean.ListBean> lists = homePage.getRet().getList();
-        TwoAdapter twoAdapter = new TwoAdapter(lists, getActivity());
+
+        Log.e("SSSSSSSSSSSSSSSSSS",lists+"  ");
+        for (int i = 0; i <lists.size() ; i++) {
+            childList = lists.get(i).getChildList();
+
+        }
+
+        final List<HomePage.RetBean.ListBean> newList=new ArrayList<>();
+
+        for (int i = 0; i <lists.size() ; i++) {
+            String moreURL = lists.get(i).getMoreURL();
+            HomePage.RetBean.ListBean listBean = lists.get(i);
+            if (!moreURL.equals("")){
+                newList.add(listBean);
+            }
+        }
+
+
+
+        TwoAdapter twoAdapter = new TwoAdapter(newList, getActivity());
         mRv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mRv.setAdapter(twoAdapter);
-
-        twoAdapter.setOnItemClickListener(new TwoAdapter.OnItemClickListener() {
-
-            private String moreURL;
-
+        twoAdapter.setOnClickItemListener(new TwoAdapter.OnClickItemListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                Intent intent = new Intent(getActivity(), TwoActivity.class);
-                moreURL = lists.get(position).getMoreURL();
-                List<HomePage.RetBean.ListBean.ChildListBean> childList = lists.get(position).getChildList();
-                intent.putExtra("list", (Serializable) childList);
-                String title = lists.get(position).getTitle();
-                intent.putExtra("title", title);
+            public void onClick(int position) {
+
+                String moreURL = newList.get(position).getMoreURL();
+                String title1 = newList.get(position).getTitle();
+                Toast.makeText(getActivity(),moreURL+""+title1,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getContext(), TwoActivity.class);
                 intent.putExtra("moreURL", moreURL);
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (moreURL.equals("")){
-                            moreURL ="http://api.svipmovie.com/front/columns/getVideoList.do?catalogId=ff8080815b9075a6015b94ef79dc0284&information=null";
-                        }
-                    }
-                });
-                intent.putExtra("moreURL", moreURL);
+                intent.putExtra("title1", title1);
                 startActivity(intent);
             }
         });
+        /*twoAdapter.setOnClickItemListener(new TwoAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(int position) {
+                String moreURL = sp.get(position).getMoreURL();
+                String title1 = sp.get(position).getTitle();
+                Intent intent = new Intent(getActivity(), TwoActivity.class);
+                intent.putExtra("moreURL", moreURL);
+                intent.putExtra("title1", title1);
+                startActivity(intent);
+            }
+        });*/
     }
 
     private void initView(View view) {

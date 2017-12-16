@@ -22,51 +22,52 @@ import static java.lang.Integer.*;
  * Created by 吴丽杰 on 2017/12/14.
  */
 
-public class TwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
+public class TwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     List<HomePage.RetBean.ListBean> lists;
     Context context;
+    /**
+     * 自定义接口实现点击事件
+     */
+    private OnClickItemListener onClickItemListener;
 
+    public  interface  OnClickItemListener{
+        void onClick(int position);
+    }
+    public  void setOnClickItemListener( OnClickItemListener onClickItemListener){
+        this.onClickItemListener=onClickItemListener;
+    }
     public TwoAdapter(List<HomePage.RetBean.ListBean> lists, Context context) {
         this.lists = lists;
         this.context = context;
     }
 
-    private OnItemClickListener mOnItemClickListener = null;
-
-    @Override
-    public void onClick(View v) {
-        if (mOnItemClickListener != null) {
-            //注意这里使用getTag方法获取position
-            mOnItemClickListener.onItemClick(v, (int) v.getTag());
-        }
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.mOnItemClickListener = listener;
-    }
-
-    //define interface
-    public static interface OnItemClickListener {
-        void onItemClick(View view, int position);
-    }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.twoitem, parent, false);
-        MyViewHolder vh = new MyViewHolder(view);
-        //将创建的View注册点击事件
-        view.setOnClickListener(this);
+        final MyViewHolder vh = new MyViewHolder(view);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-        List<HomePage.RetBean.ListBean.ChildListBean> childList = lists.get(position).getChildList();
-        myViewHolder.two_image.setImageURI(Uri.parse((lists.get(position).getChildList().get(0).getPic())));
-        myViewHolder.two_tv.setText(lists.get(position).getTitle());
+        HomePage.RetBean.ListBean listBean = lists.get(position);
+        String moreURL = listBean.getMoreURL();
+        String title = listBean.getTitle();
+        List<HomePage.RetBean.ListBean.ChildListBean> childList = listBean.getChildList();
+        for (int i = 0; i <childList.size() ; i++) {
+            String pic = childList.get(i).getPic();
+            myViewHolder.two_image.setImageURI(Uri.parse(pic));
+        }
 
-        myViewHolder.two_image.setTag(position);
+        myViewHolder.two_tv.setText(title);
+
+        myViewHolder.two_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickItemListener.onClick(position);
+            }
+        });
     }
 
     @Override
@@ -85,5 +86,6 @@ public class TwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> im
             two_tv = itemView.findViewById(R.id.two_text);
         }
     }
+
 
 }

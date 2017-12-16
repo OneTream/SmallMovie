@@ -6,39 +6,27 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bj.myapplication.Adapter.TTAdapter;
+import com.bj.myapplication.Adapter.TwoAdapter;
 import com.bj.myapplication.Bean.FilmBean;
-import com.bj.myapplication.Bean.HomePage;
 import com.bj.myapplication.R;
-import com.bj.myapplication.net.ApiService;
 import com.bj.myapplication.net.OkHttpUtils;
 import com.bj.myapplication.net.OnNetListener;
-import com.bj.myapplication.net.OnNetLister;
-import com.bj.myapplication.net.RetrofitUtils;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 
-import okhttp3.OkHttpClient;
 
 /**
  * Created by 吴丽杰 on 2017/12/14.
  */
 
 public class TwoActivity extends Activity{
-    private String dataId;
-    private TextView mTv;
     private RecyclerView mRlv;
-    private String moreURL;
-    private List<FilmBean.RetBean.ListBean> list;
-    private TTAdapter ttAdapter;
-    private View inflate;
+    private TextView mTv;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,15 +34,27 @@ public class TwoActivity extends Activity{
         setContentView(R.layout.activity_two);
         mTv = findViewById(R.id.tt_tv);
         mRlv = findViewById(R.id.tt_rlv);
-        Log.e("XXX", moreURL);
-
-        ttAdapter = new TTAdapter(list,this);
+        mRlv.setLayoutManager(new GridLayoutManager(this, 3));
+        Intent intent = getIntent();
+        String moreURL = intent.getStringExtra("moreURL");
+        String title1 = intent.getStringExtra("title1");
+        mTv.setText(title1);
         OkHttpUtils.getInstance(this).doget(moreURL, FilmBean.class, new OnNetListener() {
             @Override
             public void onSuccess(Object o) throws IOException {
-                FilmBean filmBean = (FilmBean) o;
-                list = filmBean.getRet().getList();
+                final FilmBean filmBean = (FilmBean) o;
+                final List<FilmBean.RetBean.ListBean> list = filmBean.getRet().getList();
+                TTAdapter ttAdapter = new TTAdapter(list,TwoActivity.this);
                 mRlv.setAdapter(ttAdapter);
+                ttAdapter.setOnRecyclerListener(new TTAdapter.OnRecyclerListener() {
+                    @Override
+                    public void onRecycler(int position) {
+                        Intent intent1 = new Intent(TwoActivity.this,Main2Activity.class);
+                        String dataId = list.get(position).getDataId();
+                        intent1.putExtra("dataId",dataId);
+                        startActivity(intent1);
+                    }
+                });
             }
 
             @Override
@@ -62,7 +62,6 @@ public class TwoActivity extends Activity{
 
             }
         });
-        mRlv.setLayoutManager(new GridLayoutManager(this, 3));
     }
 
 }
