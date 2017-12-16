@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bj.myapplication.Adapter.TwoAdapter;
 import com.bj.myapplication.Bean.HomePage;
@@ -76,7 +75,7 @@ public class TwoFragment extends Fragment implements IView_Home_Page {
 
                 String moreURL = newList.get(position).getMoreURL();
                 String title1 = newList.get(position).getTitle();
-                Toast.makeText(getActivity(),moreURL+""+title1,Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getActivity(),moreURL+""+title1,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getContext(), TwoActivity.class);
                 intent.putExtra("moreURL", moreURL);
                 intent.putExtra("title1", title1);

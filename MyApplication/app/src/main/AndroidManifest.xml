@@ -3,6 +3,10 @@
     package="com.bj.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 
     <application
         android:name=".net.Myapp"
@@ -19,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".View.TwoActivity"/>
         <activity android:name=".View.Main2Activity" />
         <activity android:name=".View.SetActivity" />
         <activity android:name=".View.SearchActivity" />
