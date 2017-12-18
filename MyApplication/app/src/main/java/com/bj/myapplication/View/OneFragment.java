@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +64,8 @@ public class OneFragment extends Fragment implements IView_Home_Page {
                 Intent intent = new Intent(getActivity(), Main2Activity.class);
                 intent.putExtra("dataId", dataId);
                 startActivity(intent);
+
+
             }
         });
         List<String> mlist = new ArrayList<>();
