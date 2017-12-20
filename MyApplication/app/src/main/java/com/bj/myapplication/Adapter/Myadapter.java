@@ -19,13 +19,14 @@ import java.util.List;
  */
 
 public class Myadapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
-    List<HomePage.RetBean.ListBean> list;
+    List<HomePage.RetBean.ListBean.ChildListBean> childList;
     Context context;
 
-    public Myadapter(List<HomePage.RetBean.ListBean> list, Context context) {
-        this.list = list;
+    public Myadapter(List<HomePage.RetBean.ListBean.ChildListBean> childList, Context context) {
+        this.childList = childList;
         this.context = context;
     }
+
     private OnItemClickListener mOnItemClickListener = null;
 
     @Override
@@ -54,17 +55,15 @@ public class Myadapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> imp
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder= (MyViewHolder) holder;
-        List<HomePage.RetBean.ListBean.ChildListBean> childList = list.get(position).getChildList();
-        for (int i = 0; i <childList.size(); i++) {
-            myViewHolder.main_adv.setImageURI(Uri.parse(childList.get(i).getPic()));
-            myViewHolder.tv.setText(childList.get(i).getTitle());
-        }
+            myViewHolder.main_adv.setImageURI(Uri.parse(childList.get(position).getPic()));
+            myViewHolder.tv.setText(childList.get(position).getTitle());
+            String dataId = childList.get(position).getDataId();
         myViewHolder.itemView.setTag(position);
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return childList.size();
     }
     class MyViewHolder extends RecyclerView.ViewHolder{
 

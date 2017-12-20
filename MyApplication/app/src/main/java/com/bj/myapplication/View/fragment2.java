@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,8 @@ public class fragment2 extends Fragment implements IView_Comment{
         View view = inflater.inflate(R.layout.fragment2, container, false);
         rv_f2 = view.findViewById(R.id.rv_f2);
         SharedPreferences sharedPreferences= getActivity().getSharedPreferences("User",MODE_PRIVATE);
-        dataId = sharedPreferences.getString("dataId","b6c8438873fd4a0f8880b2def64c6472");
+        dataId = sharedPreferences.getString("dataId","6d281b072b6246849252e33f2c4acb2d");
+        Log.i("dataId,fragment2",dataId);
         P_Comment p_comment=new P_Comment(this);
         p_comment.relevance3(dataId);
         return view;

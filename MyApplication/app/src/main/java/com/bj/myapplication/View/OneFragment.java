@@ -29,10 +29,10 @@ import java.util.List;
  */
 
 public class OneFragment extends Fragment implements IView_Home_Page {
-    private String dataId;
     private Banner mBanner;
     private RecyclerView mRlv;
     private EditText editText;
+    private String dataId;
 
     @Nullable
     @Override
@@ -54,13 +54,14 @@ public class OneFragment extends Fragment implements IView_Home_Page {
 
     @Override
     public void getShow(HomePage homePage) {
-        List<HomePage.RetBean.ListBean> list = homePage.getRet().getList();
-        Myadapter myadapter = new Myadapter(list, getActivity());
+        final List<HomePage.RetBean.ListBean.ChildListBean> childList = homePage.getRet().getList().get(0).getChildList();
+        Myadapter myadapter = new Myadapter(childList, getActivity());
         mRlv.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRlv.setAdapter(myadapter);
         myadapter.setOnItemClickListener(new Myadapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                dataId = childList.get(position).getDataId();
                 Intent intent = new Intent(getActivity(), Main2Activity.class);
                 intent.putExtra("dataId", dataId);
                 startActivity(intent);
@@ -69,10 +70,8 @@ public class OneFragment extends Fragment implements IView_Home_Page {
             }
         });
         List<String> mlist = new ArrayList<>();
-        List<HomePage.RetBean.ListBean.ChildListBean> childList = list.get(0).getChildList();
         for (int i = 0; i < childList.size(); i++) {
             String pic = childList.get(i).getPic();
-            dataId = childList.get(i).getDataId();
             mlist.add(pic);
         }
         mBanner.setImageLoader(new GlideImageLoader());

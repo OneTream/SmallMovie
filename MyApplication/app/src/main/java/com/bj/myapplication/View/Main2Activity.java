@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.bj.myapplication.Bean.VideoDetail;
@@ -34,9 +35,11 @@ public class Main2Activity extends AppCompatActivity implements IView_Video_Deta
         initView();
         Intent intent = getIntent();
         String dataId = intent.getStringExtra("dataId");
+        Log.i("dataId,Main2Activity",dataId);
         SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_APPEND);
         SharedPreferences.Editor edit = sharedPreferences.edit();
         edit.putString("dataId", dataId);
+        edit.commit();
         //与P层交互
         P_Video_Detail p_video_detail = new P_Video_Detail(this);
         p_video_detail.relevance2(dataId);
